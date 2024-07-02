@@ -14,5 +14,5 @@ and the TRY database (Kattge et al., 2020)
 Contains geology information at the plot level. 
 
 Note that the R files included here are intermediate data results and are provided here 
-as computational time is time consuming. The analysis can replicated quickly by loading
+as computational time is time consuming. The analysis can be replicated quickly by loading
 the R files. 
