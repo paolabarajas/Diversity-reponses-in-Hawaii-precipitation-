@@ -108,7 +108,6 @@ for (i in 1:ncol(traits)) {
 }
 distM <- cluster::daisy(x = traits, metric = "gower") %>% as.matrix()
 
-
 FD_est <- estimate3D(data = Abun_p, diversity = 'FD', q = c(0, 1, 2), datatype = 'abundance', base = 'coverage',
                      level = Cmax, nboot = 0, FDdistM = distM)
 
@@ -156,7 +155,14 @@ coco = c(
 
 load("results_native_plot_20230601.RData")
 load("results_all_plot_20230601.RData")   
-   
+
+# ADITIONAL VARIABLES: mean annual Air temperature and geological information (substrate ages within islands) 
+datt_env <- read.csv("C:/Hawaii_project/Hawaii/pub_code_data/data/datt_env_20240604.csv")
+datt_env <- select(datt_env, PlotID, Haw_St_geo, tair_ann)
+
+results_native_plot <-left_join(results_native_plot, datt_env, by = "PlotID") 
+results_all_plot    <-left_join(results_all_plot, datt_env, by = "PlotID") 
+
 #   z <- results_native_plot
 #   z <- results_all_plot
 #   z <- filter(z, MAP > 800 & MAP < 4000) # Sub-set MAP range. Supplementary material
